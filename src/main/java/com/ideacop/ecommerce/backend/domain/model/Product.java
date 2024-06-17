@@ -21,5 +21,4 @@ public class Product {
     private LocalDateTime dateUpdated;
     private Integer userId;
     private Integer categoryId;
-
 }
