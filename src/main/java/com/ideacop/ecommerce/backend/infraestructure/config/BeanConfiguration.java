@@ -1,8 +1,10 @@
 package com.ideacop.ecommerce.backend.infraestructure.config;
 
 import com.ideacop.ecommerce.backend.application.CategoryService;
+import com.ideacop.ecommerce.backend.application.ProductService;
 import com.ideacop.ecommerce.backend.application.UserService;
 import com.ideacop.ecommerce.backend.domain.port.ICategoryRepository;
+import com.ideacop.ecommerce.backend.domain.port.IProductRepository;
 import com.ideacop.ecommerce.backend.domain.port.IUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,5 +20,10 @@ public class BeanConfiguration {
     @Bean
     public CategoryService categoryService(ICategoryRepository iCategoryRepository) {
         return new CategoryService(iCategoryRepository);
+    }
+
+    @Bean
+    public ProductService productService(IProductRepository iProductRepository) {
+        return new ProductService(iProductRepository);
     }
 }
