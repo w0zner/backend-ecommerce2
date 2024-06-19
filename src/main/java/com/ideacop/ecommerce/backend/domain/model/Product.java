@@ -19,6 +19,7 @@ public class Product {
     private BigDecimal price;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
+
     private Integer userId;
     private Integer categoryId;
 }
