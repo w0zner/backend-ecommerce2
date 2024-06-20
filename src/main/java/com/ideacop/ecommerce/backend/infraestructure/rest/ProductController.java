@@ -5,6 +5,9 @@ import com.ideacop.ecommerce.backend.domain.model.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @CrossOrigin(origins = {"http://localhost:3200", "http://localhost:3000"})
 @RestController
@@ -27,8 +30,16 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> save(@RequestBody Product product) {
-        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
+    public ResponseEntity<Product> save(@RequestPart("product") Product product,
+                                        @RequestPart(value = "image", required = false) MultipartFile image) {
+        Product productoGuardado= null;
+
+        try {
+            productoGuardado = productService.save(product, image);
+            return new ResponseEntity<>(productoGuardado, HttpStatus.CREATED);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @DeleteMapping("/{id}")

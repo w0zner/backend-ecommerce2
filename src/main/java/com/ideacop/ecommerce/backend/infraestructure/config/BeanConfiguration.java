@@ -1,9 +1,6 @@
 package com.ideacop.ecommerce.backend.infraestructure.config;
 
-import com.ideacop.ecommerce.backend.application.CategoryService;
-import com.ideacop.ecommerce.backend.application.OrderService;
-import com.ideacop.ecommerce.backend.application.ProductService;
-import com.ideacop.ecommerce.backend.application.UserService;
+import com.ideacop.ecommerce.backend.application.*;
 import com.ideacop.ecommerce.backend.domain.port.ICategoryRepository;
 import com.ideacop.ecommerce.backend.domain.port.IOrderRepository;
 import com.ideacop.ecommerce.backend.domain.port.IProductRepository;
@@ -25,8 +22,13 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public ProductService productService(IProductRepository iProductRepository) {
-        return new ProductService(iProductRepository);
+    public UploadFile uploadFile(){
+        return new UploadFile();
+    }
+
+    @Bean
+    public ProductService productService(IProductRepository iProductRepository, UploadFile uploadFile) {
+        return new ProductService(iProductRepository, uploadFile);
     }
 
     @Bean
