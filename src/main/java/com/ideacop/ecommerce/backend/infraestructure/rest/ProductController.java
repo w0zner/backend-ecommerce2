@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:3200")
+@CrossOrigin(origins = {"http://localhost:3200", "http://localhost:3000"})
 @RestController
 @RequestMapping("/api/v1/products")
 public class ProductController {
@@ -31,7 +31,7 @@ public class ProductController {
         return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> delete(@PathVariable Integer id) {
         productService.deleteById(id);
         return ResponseEntity.ok().build();
