@@ -54,7 +54,7 @@ public class ProductService {
         if(!urlImage.isBlank()){
             String urlResource = "http://localhost:3000/images/";
             String nameFile = urlImage.substring(urlResource.length());
-            if(!productBaseDatos.getUrlImage().equals("default.jpg")) {
+            if(!nameFile.equals("default.jpg")) {
                 uploadFile.delete(nameFile);
             }
         }
