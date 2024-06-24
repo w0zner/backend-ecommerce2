@@ -482,3 +482,11 @@ Caused by: java.lang.StringIndexOutOfBoundsException: String index out of range:
 	at org.h2.util.DateTimeUtils.parseTimestamp(DateTimeUtils.java:338)
 	at org.h2.value.ValueTimestamp.parse(ValueTimestamp.java:86)
 	... 54 more
+2024-06-22 18:37:51.849458-04:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "DESCRIPTION CHARACTER VARYING(255)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lore... (366)"
+Value too long for column "DESCRIPTION CHARACTER VARYING(255)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lore... (366)"; SQL statement:
+insert into products (category_entity_id,code,date_created,date_updated,description,name,price,url_image,user_entity_id,id) values (?,?,?,?,?,?,?,?,?,default) [22001-224]
+2024-06-22 18:37:59.918928-04:00 jdbc[23]: exception
+org.h2.jdbc.JdbcSQLDataException: Valor demasiado largo para la columna "DESCRIPTION CHARACTER VARYING(255)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lore... (366)"
+Value too long for column "DESCRIPTION CHARACTER VARYING(255)": "'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lore... (366)"; SQL statement:
+insert into products (category_entity_id,code,date_created,date_updated,description,name,price,url_image,user_entity_id,id) values (?,?,?,?,?,?,?,?,?,default) [22001-224]
