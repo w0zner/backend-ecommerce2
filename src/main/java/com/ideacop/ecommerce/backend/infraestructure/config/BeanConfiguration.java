@@ -35,4 +35,9 @@ public class BeanConfiguration {
     public OrderService orderService(IOrderRepository iOrderRepository) {
         return new OrderService(iOrderRepository);
     }
+
+    @Bean
+    public RegistrationService registrationService(IUserRepository iUserRepository) {
+        return new RegistrationService(iUserRepository);
+    }
 }
