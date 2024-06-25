@@ -22,7 +22,9 @@ public class UserCrudRepositoryImpl implements IUserRepository {
 
     @Override
     public User findByEmail(String email) {
-        return null;
+        return userMapper.toUser(iUserCrudRepository.findByEmail(email).orElseThrow(
+                () -> new RuntimeException("Usuario con email: " + email + " no encontrado.")
+        ));
     }
 
     @Override
