@@ -3,10 +3,7 @@ package com.ideacop.ecommerce.backend.infraestructure.rest;
 import com.ideacop.ecommerce.backend.application.ProductService;
 import com.ideacop.ecommerce.backend.domain.model.Product;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = {"http://localhost:3200", "http://localhost:3000"})
 @RestController
@@ -22,5 +19,10 @@ public class HomeController {
     @GetMapping
     public ResponseEntity<Iterable<Product>> findAll(){
         return ResponseEntity.ok(productService.findAll());
+    }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<Product> findById(@PathVariable Integer id) {
+        return ResponseEntity.ok(productService.findById(id));
     }
 }

@@ -39,10 +39,11 @@ public class SecurityConfig {
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/admin/**")).hasRole("ADMIN")
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/orders/**")).hasRole("USER")
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/payments/**")).hasRole("USER")
-                        .requestMatchers(new AntPathRequestMatcher("/api/v1/home")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/v1/home/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/security/register")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/security/login")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/images/**")).permitAll()
                         .anyRequest().authenticated()
         )
                 .addFilterAfter(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);

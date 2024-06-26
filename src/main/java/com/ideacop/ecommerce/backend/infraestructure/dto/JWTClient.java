@@ -1,4 +1,4 @@
 package com.ideacop.ecommerce.backend.infraestructure.dto;
 
-public record JWTClient(String token) {
+public record JWTClient(Integer id, String nombre, String token) {
 }
