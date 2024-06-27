@@ -25,6 +25,7 @@ public class RegistrationController {
     public ResponseEntity<User> register(@RequestBody User user) {
         log.info("Clave encriptada: {}", passwordEncoder.encode(user.getPassword()));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        log.info("Usuario registrandose {}", user);
         return new ResponseEntity<User>(registrationService.register(user), HttpStatus.CREATED);
     }
 }
