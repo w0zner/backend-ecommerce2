@@ -12,6 +12,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.Arrays;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -33,6 +36,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+                .cors(
+                        cors -> cors.configurationSource(
+                                request -> {
+                                    CorsConfiguration corsConfiguration= new CorsConfiguration();
+                                    corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3200", "http://localhost:3000"));
+                                    corsConfiguration.setAllowedMethods(Arrays.asList("*"));
+                                    corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+                                    return corsConfiguration;
+                                }
+                        )
+                )
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                 aut -> aut
