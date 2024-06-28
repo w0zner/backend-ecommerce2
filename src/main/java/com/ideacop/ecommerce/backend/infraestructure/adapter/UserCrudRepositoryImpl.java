@@ -31,4 +31,14 @@ public class UserCrudRepositoryImpl implements IUserRepository {
     public User findById(Integer id) {
         return userMapper.toUser(iUserCrudRepository.findById(id).get());
     }
+
+    @Override
+    public Iterable<User> findAll() {
+        return userMapper.toUsers(iUserCrudRepository.findAll());
+    }
+
+    @Override
+    public void deleteUser(Integer id) {
+        iUserCrudRepository.deleteById(id);
+    }
 }

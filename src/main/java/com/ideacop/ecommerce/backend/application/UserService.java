@@ -21,4 +21,10 @@ public class UserService {
     public User findByEmail(String email) {
         return iUserRepository.findByEmail(email);
     }
+
+    public Iterable<User> findAll(){
+        return iUserRepository.findAll();
+    }
+
+    public void deleteUser(Integer id) { iUserRepository.deleteUser(id); }
 }
