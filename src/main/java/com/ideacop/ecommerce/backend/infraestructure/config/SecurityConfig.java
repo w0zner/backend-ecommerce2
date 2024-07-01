@@ -52,6 +52,8 @@ public class SecurityConfig {
                 aut -> aut
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/admin/**")).hasRole("ADMIN")
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/orders/**")).hasRole("USER")
+                        .requestMatchers(new AntPathRequestMatcher("/api/v1/payments/success")).permitAll()
+                        .requestMatchers(new AntPathRequestMatcher("/api/v1/payments/cancel")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/payments/**")).hasRole("USER")
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/home/**")).permitAll()
                         .requestMatchers(new AntPathRequestMatcher("/api/v1/security/register")).permitAll()

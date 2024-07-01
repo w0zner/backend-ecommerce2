@@ -51,11 +51,11 @@ public class PaypalController {
     }
 
     @GetMapping("/success")
-    public RedirectView paymentSuccess(@RequestParam("paymentId") String paymentId, @RequestParam("PayerId") String payerId){
+    public RedirectView paymentSuccess(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId){
         try {
             Payment payment= paypalService.executePayment(paymentId, payerId);
             if(payment.getState().equals("approved")){
-                return new RedirectView("http://localhost:3200");
+                return new RedirectView("http://localhost:3200/payment/success");
             }
         } catch (PayPalRESTException e) {
             log.error("Error al ejecutar el pago con paypal {}", e.getMessage());
